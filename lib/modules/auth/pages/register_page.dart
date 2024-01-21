@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
 import 'package:flutter_divar_clone/helpers/widgets/text_field_widget.dart';
+import 'package:flutter_divar_clone/modules/auth/pages/login_page.dart';
 import 'package:flutter_divar_clone/modules/auth/widgets/auth_page_app_bar_widget.dart';
 import 'package:flutter_divar_clone/modules/auth/widgets/auth_page_footer_widget.dart';
 import 'package:flutter_divar_clone/modules/auth/widgets/select_province_and_city_button.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 
@@ -58,7 +60,7 @@ class RegisterPage extends StatelessWidget {
                         text: "ثبت نام"),
                     const SizedBox(height: 18),
                     AuthFooterWidget(
-                      onTap: () {},
+                      onTap: () => Get.off(const LoginPage()),
                       text:"حساب کاربری دارید؟",
                       buttonText: "وارد شوید",
                     )

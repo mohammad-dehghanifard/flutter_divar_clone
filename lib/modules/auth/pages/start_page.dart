@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
+import 'package:flutter_divar_clone/modules/auth/pages/login_page.dart';
 import 'package:flutter_divar_clone/modules/auth/pages/register_page.dart';
 import 'package:get/get.dart';
 
@@ -35,7 +36,7 @@ class StartPage extends StatelessWidget {
               const SizedBox(height: 12),
               // login
               ButtonWidget(
-                  onTap: () {},
+                  onTap: () => Get.to(const LoginPage()),
                   filled: false,
                   text: "ورود")
             ],
