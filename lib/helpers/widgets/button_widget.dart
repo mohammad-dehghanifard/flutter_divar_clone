@@ -7,7 +7,7 @@ class ButtonWidget extends StatelessWidget {
     required this.text,
     this.width = double.infinity,
     this.height = 43,
-    this.radius = 8,
+    this.radius = 12,
     this.filled = true,
     this.loading = false,
     super.key,
@@ -39,7 +39,7 @@ class ButtonWidget extends StatelessWidget {
         color: Theme.of(context).colorScheme.onPrimary,
         size: 20,
       )
-          : Text(text,style: TextStyle(color: filled ? Colors.white : Theme.of(context).colorScheme.primary)),
+          : Text(text,style: TextStyle(color: filled ? Colors.white : Theme.of(context).colorScheme.primary,fontWeight: FontWeight.w500,fontSize: 16)),
     );
   }
 }

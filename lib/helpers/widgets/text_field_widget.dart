@@ -5,7 +5,7 @@ class TextFieldWidget extends StatelessWidget {
     super.key,
     this.controller,
     required this.hintText,
-    required this.icon,
+    this.icon,
     this.radius = 12.0,
     this.type = TextInputType.text,
     this.maxLine = 1
@@ -13,7 +13,7 @@ class TextFieldWidget extends StatelessWidget {
 
   final TextEditingController? controller;
   final String hintText;
-  final IconData icon;
+  final IconData? icon;
   final double radius;
   final TextInputType type;
   final int maxLine;
