@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TextFieldWidget extends StatelessWidget {
+class TextFieldWidget extends StatefulWidget {
   const TextFieldWidget({
     super.key,
     this.controller,
@@ -9,7 +10,7 @@ class TextFieldWidget extends StatelessWidget {
     this.validator,
     this.radius = 12.0,
     this.type = TextInputType.text,
-    this.maxLine = 1
+    this.maxLine
   });
 
   final TextEditingController? controller;
@@ -17,21 +18,40 @@ class TextFieldWidget extends StatelessWidget {
   final IconData? icon;
   final double radius;
   final TextInputType type;
-  final int maxLine;
+  final int? maxLine;
   final String? Function(String? value)? validator;
+
+  @override
+  State<TextFieldWidget> createState() => _TextFieldWidgetState();
+}
+
+class _TextFieldWidgetState extends State<TextFieldWidget> {
+   bool _obscure = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller,
-      maxLines: maxLine,
-      keyboardType: type,
-      validator: validator,
+      obscureText: widget.type == TextInputType.visiblePassword ? _obscure : false,
+      controller: widget.controller,
+      maxLines: widget.type == TextInputType.visiblePassword? 1 :widget.maxLine,
+      keyboardType: widget.type,
+      validator: widget.validator,
       decoration:  InputDecoration(
-        hintText: hintText,
+        hintText: widget.hintText,
         hintStyle: const TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: Color(0xFF959595)),
         contentPadding: const EdgeInsets.all(8),
-        suffixIcon:  Icon(icon,color: const Color(0xFF959595)),
+        suffixIcon: GestureDetector(
+          onTap: () {
+            if(widget.type == TextInputType.visiblePassword){
+              _obscure = !_obscure;
+              setState(() {});
+            }
+          },
+          child: Icon(
+             widget.type == TextInputType.visiblePassword?  (_obscure?  CupertinoIcons.eye  : CupertinoIcons.eye_slash )
+                 : widget.icon,
+              color: const Color(0xFF959595)),
+        ),
         filled: true,
         fillColor: const Color(0xFFFFFFFF),
         enabledBorder: OutlineInputBorder(

@@ -67,14 +67,12 @@ class RegisterPage extends StatelessWidget {
                               hintText: "رمز عوبر",
                               validator: controller.validatePasswordForm,
                               controller: controller.passwordText,
-                            icon: CupertinoIcons.eye,
                             type: TextInputType.visiblePassword),
                           const SizedBox(height: 12),
                           TextFieldWidget(
                             controller: controller.repeatPasswordText,
                               validator: controller.validateRepeatPasswordForm,
                               hintText: "تکرار رمز عبور",
-                              icon: CupertinoIcons.eye,
                               type: TextInputType.visiblePassword),
                           const SizedBox(height: 32),
                           // register button
