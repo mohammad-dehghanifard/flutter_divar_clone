@@ -11,8 +11,8 @@ class ThemeManager {
       onPrimary: Color(0xFFFFFFFF)
     ),
     useMaterial3: true,
-    textTheme: const TextTheme(
-      bodyMedium: TextStyle()
+    textTheme:  const TextTheme(
+      bodyMedium: TextStyle(color: Color(0xFF1C1C1C))
     )
   );
 }

@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Divar Clone',
+      debugShowCheckedModeBanner: false,
       locale: const Locale("fa"),
       theme: ThemeManager.lightMode,
       home: const SplashPage(),

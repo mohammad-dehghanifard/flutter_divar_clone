@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
+import 'package:flutter_divar_clone/modules/auth/pages/register_page.dart';
+import 'package:get/get.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -28,7 +30,7 @@ class StartPage extends StatelessWidget {
               const Spacer(),
               // register button
               ButtonWidget(
-                  onTap: () {},
+                  onTap:( ) => Get.to(const RegisterPage()),
                   text: "ثبت نام"),
               const SizedBox(height: 12),
               // login
