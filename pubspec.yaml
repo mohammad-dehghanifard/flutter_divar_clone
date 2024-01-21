@@ -39,7 +39,7 @@ dependencies:
   get: ^4.6.6
   cached_network_image: ^3.3.1
   connectivity_plus: ^5.0.2
-  iconsax_flutter: ^1.0.0
+  iconsax: ^0.0.8
   flutter_spinkit: ^5.2.0
 
 dev_dependencies:

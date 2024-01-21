@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:get/get.dart';
 
 class AuthPageAppBarWidget extends StatelessWidget {
@@ -11,7 +12,7 @@ class AuthPageAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: Distance.bodyMargin),
       child: Row(
         children: [
           Text(title,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.w700)),
