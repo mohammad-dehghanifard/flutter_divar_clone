@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter_divar_clone/modules/auth/pages/start_page.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
@@ -25,7 +26,7 @@ class SplashController extends GetxController {
     update();
     // Navigate to start page
     if(connection){
-
+      Get.to(const StartPage());
     }
   }
 
