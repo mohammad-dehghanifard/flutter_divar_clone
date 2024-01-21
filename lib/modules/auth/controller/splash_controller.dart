@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class SplashController extends GetxController {
 //=========================== variables ========================================
-  bool? connection;
+  bool connection = true;
 
 //=========================== Methods ==========================================
   Future<void> checkConnection() async {
