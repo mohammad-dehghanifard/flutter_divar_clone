@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
-import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
 import 'package:flutter_divar_clone/modules/auth/controller/splash_controller.dart';
+import 'package:flutter_divar_clone/modules/auth/widgets/no_connection_widget.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
@@ -47,19 +47,7 @@ class SplashPage extends StatelessWidget {
                         alignment: Alignment.bottomCenter,
                         child: Text("ورژن : 1.0.0",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14)))
                   ],
-                ) : Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.wifi_off_sharp,size: 128,color: Theme.of(context).colorScheme.primary),
-                    const SizedBox(height: 4),
-                    Text("دستگاه شما به اینرنت متصل نمیباشد!",style: TextStyle(color: Theme.of(context).colorScheme.primary)),
-                    const SizedBox(height: 32),
-                    ButtonWidget(
-                      onTap: controller.checkConnection,
-                      text: "امتحان مجدد",
-                    ),
-                  ],
-                ),
+                ) : const NoConnectionWidget(),
               ),
             ),
           ),
@@ -68,5 +56,7 @@ class SplashPage extends StatelessWidget {
     );
   }
 }
+
+
 
 

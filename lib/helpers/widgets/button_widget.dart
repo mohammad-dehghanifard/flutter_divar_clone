@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
@@ -32,9 +33,13 @@ class ButtonWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(radius),
           side: filled? BorderSide.none :  BorderSide(color: Theme.of(context).colorScheme.primary)
       ),
-      onPressed: onTap,
+      onPressed: loading? (){} : onTap,
       color: filled? Theme.of(context).colorScheme.primary : Colors.transparent,
-      child: Text(text,style: TextStyle(color: filled ? Colors.white : Theme.of(context).colorScheme.primary)),
+      child: loading? SpinKitThreeBounce(
+        color: Theme.of(context).colorScheme.onPrimary,
+        size: 20,
+      )
+          : Text(text,style: TextStyle(color: filled ? Colors.white : Theme.of(context).colorScheme.primary)),
     );
   }
 }
