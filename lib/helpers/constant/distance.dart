@@ -1,3 +1,3 @@
 class Distance {
-  static const bodyMargin = 20;
+  static const bodyMargin = 20.0;
 }
