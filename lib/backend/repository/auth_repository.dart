@@ -27,7 +27,6 @@ class AuthRepository extends BaseRepository {
     final Map<String,dynamic> data = {"mobile": mobile, "password": password,};
     final response = await dio.post("/login",data: data);
     validateResponse(response);
-    print(response.data);
     return AuthResponse.fromJson(response.data);
   }
 

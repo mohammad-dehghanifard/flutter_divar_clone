@@ -91,14 +91,17 @@ class RegisterController extends GetxController {
       if(selectedProvince == null || selectedCity == null){
         showSnackBar(message: "لطفا شهر خود را انتخاب کنید!", type: SnackBarType.error);
       }else{
-        final result = await _repository.registerApi(
+        loading = true;
+        update();
+       await _repository.registerApi(
             name: fullNameText.text,
             mobile: phoneNumberText.text,
             cityId: selectedCity!.id!,
             address: addressText.text,
             password: passwordText.text,
             confirmPass: repeatPasswordText.text);
-       print(result);
+        loading = false;
+        update();
 
       }
     }
