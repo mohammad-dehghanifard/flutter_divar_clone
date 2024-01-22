@@ -31,7 +31,8 @@ class RegisterPage extends StatelessWidget {
                   builder: (controller) {
                     return Form(
                       key: controller.formKey,
-                      child: Column(
+                      child: controller.provinces == null? const Center(child: CircularProgressIndicator())
+                          :Column(
                         children: [
                           // full name
                           TextFieldWidget(
@@ -59,7 +60,8 @@ class RegisterPage extends StatelessWidget {
                                         return const ProvinceAndCityDialog();
                                       },);
                                     },
-                                    text: "استان",)),
+                                    text: controller.selectedProvince == null ?"استان" : controller.selectedProvince!.name!,
+                                  )),
                               const SizedBox(width: 24),
                               Expanded(
                                   child: SelectProvinceAndCityButton(
@@ -70,7 +72,8 @@ class RegisterPage extends StatelessWidget {
                                       return const ProvinceAndCityDialog();
                                     },);
                                 } ,
-                                text: "شهر",))
+                                text: controller.selectedCity == null ?"شهر" : controller.selectedCity!.name!,
+                                  ))
                             ],
                           ),
                           const SizedBox(height: 12),

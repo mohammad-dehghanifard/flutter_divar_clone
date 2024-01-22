@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_divar_clone/backend/models/city.dart';
+import 'package:flutter_divar_clone/backend/models/province.dart';
 import 'package:flutter_divar_clone/backend/repository/auth_repository.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
 import 'package:get/get.dart';
+
 
 class RegisterController extends GetxController {
 //=========================== variables ========================================
@@ -14,6 +17,8 @@ class RegisterController extends GetxController {
   final AuthRepository _repository = AuthRepository();
   bool loading = false;
   ProvinceResponse? provinces;
+  Province? selectedProvince;
+  City? selectedCity;
 
 //=========================== Methods ==========================================
 
@@ -65,6 +70,16 @@ class RegisterController extends GetxController {
   Future<void> fetchProvinceAndCities() async {
     final response = await _repository.getAllProvinceAndCityApi();
     provinces = response;
+    update();
+  }
+
+  void onSelectCity(City city){
+    selectedCity = city;
+    update();
+  }
+
+  void onSelectProvince(Province province){
+    selectedProvince = province;
     update();
   }
 

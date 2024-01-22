@@ -5,7 +5,6 @@ class AuthRepository extends BaseRepository {
   Future<ProvinceResponse?> getAllProvinceAndCityApi() async {
     try{
       final response = await dio.get("/provinces");
-      print(response.data);
       return ProvinceResponse.fromJson(response.data);
     }catch(e){
       print(e);
