@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_divar_clone/backend/repository/auth_repository.dart';
+import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
@@ -6,6 +8,7 @@ class LoginController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController phoneNumberText = TextEditingController();
   final TextEditingController passwordText = TextEditingController();
+  final AuthRepository _repository = AuthRepository();
   bool loading = false;
 
 //=========================== Methods ==========================================
@@ -30,9 +33,16 @@ class LoginController extends GetxController {
   }
   //#endregion
 
-  void login(){
+  Future<void> login() async {
     if(formKey.currentState!.validate()){
-
+      loading = true;
+      update();
+      final result = await _repository.loginApi(mobile: phoneNumberText.text, password: passwordText.text);
+      if(result.user != null){
+        showSnackBar(message: "با موفقیت وارد شدید!", type: SnackBarType.success);
+      }
+      loading = false;
+      update();
     }
   }
 }

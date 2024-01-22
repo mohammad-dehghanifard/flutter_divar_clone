@@ -17,6 +17,8 @@ class BaseRepository {
   );
 
   void validateResponse(Response response){
-    showSnackBar(message: response.data['message'], type: SnackBarType.error);
+    if(response.statusCode != 200){
+      showSnackBar(message: response.data['message'] ?? "خطای ناشناخته", type: SnackBarType.error);
+    }
   }
 }
