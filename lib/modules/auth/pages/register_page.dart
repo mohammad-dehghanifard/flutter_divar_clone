@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
