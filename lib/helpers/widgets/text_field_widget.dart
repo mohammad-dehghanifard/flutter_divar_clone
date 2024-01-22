@@ -10,7 +10,8 @@ class TextFieldWidget extends StatefulWidget {
     this.validator,
     this.radius = 12.0,
     this.type = TextInputType.text,
-    this.maxLine
+    this.maxLine,
+    this.haseBorder = true
   });
 
   final TextEditingController? controller;
@@ -20,6 +21,7 @@ class TextFieldWidget extends StatefulWidget {
   final TextInputType type;
   final int? maxLine;
   final String? Function(String? value)? validator;
+  final bool haseBorder;
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -53,7 +55,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               color: const Color(0xFF959595)),
         ),
         filled: true,
-        fillColor: const Color(0xFFFFFFFF),
+        fillColor: widget.haseBorder? const Color(0xFFFFFFFF) : const Color(0xFFEFEFEF) ,
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: Color(0xFFECECEC),width: 1)
