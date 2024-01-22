@@ -22,4 +22,12 @@ class AuthRepository extends BaseRepository {
     validateResponse(response);
     return AuthResponse.fromJson(response.data);
   }
+  // login
+  Future<AuthResponse> loginApi({required String mobile,required String password}) async {
+    final Map<String,dynamic> data = {"mobile": mobile, "password": password,};
+    final response = await dio.post("/login",data: data);
+    validateResponse(response);
+    return AuthResponse.fromJson(response.data);
+  }
+
 }
