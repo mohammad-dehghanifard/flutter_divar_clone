@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_divar_clone/backend/models/city.dart';
 import 'package:flutter_divar_clone/backend/models/province.dart';
 import 'package:flutter_divar_clone/backend/repository/auth_repository.dart';
+import 'package:flutter_divar_clone/backend/response/auth_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +18,7 @@ class RegisterController extends GetxController {
   final AuthRepository _repository = AuthRepository();
   bool loading = false;
   ProvinceResponse? provinces;
+  AuthResponse? authResponse;
   Province? selectedProvince;
   City? selectedCity;
 
@@ -85,7 +87,7 @@ class RegisterController extends GetxController {
 
   void register(){
     if(formKey.currentState!.validate()){
-
+      
     }
   }
 
