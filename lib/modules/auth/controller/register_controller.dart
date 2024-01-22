@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_divar_clone/backend/repository/auth_repository.dart';
+import 'package:flutter_divar_clone/backend/response/province_response.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
@@ -9,7 +11,9 @@ class RegisterController extends GetxController {
   final TextEditingController phoneNumberText = TextEditingController();
   final TextEditingController passwordText = TextEditingController();
   final TextEditingController repeatPasswordText = TextEditingController();
+  final AuthRepository _repository = AuthRepository();
   bool loading = false;
+  ProvinceResponse? provinces;
 
 //=========================== Methods ==========================================
 
@@ -58,10 +62,22 @@ class RegisterController extends GetxController {
   }
   //#endregion
 
+  Future<void> fetchProvinceAndCities() async {
+    final response = await _repository.getAllProvinceAndCityApi();
+    provinces = response;
+    update();
+  }
+
   void register(){
     if(formKey.currentState!.validate()){
 
     }
   }
 
+//=========================== life cycle =======================================
+@override
+  void onInit() {
+    fetchProvinceAndCities();
+    super.onInit();
+  }
 }
