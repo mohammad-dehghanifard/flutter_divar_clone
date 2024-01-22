@@ -4,6 +4,7 @@ import 'package:flutter_divar_clone/backend/models/province.dart';
 import 'package:flutter_divar_clone/backend/repository/auth_repository.dart';
 import 'package:flutter_divar_clone/backend/response/auth_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
+import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
 import 'package:get/get.dart';
 
 
@@ -85,9 +86,21 @@ class RegisterController extends GetxController {
     update();
   }
 
-  void register(){
+  Future<void> register() async {
     if(formKey.currentState!.validate()){
-      
+      if(selectedProvince == null || selectedCity == null){
+        showSnackBar(message: "لطفا شهر خود را انتخاب کنید!", type: SnackBarType.error);
+      }else{
+        final result = await _repository.registerApi(
+            name: fullNameText.text,
+            mobile: phoneNumberText.text,
+            cityId: selectedCity!.id!,
+            address: addressText.text,
+            password: passwordText.text,
+            confirmPass: repeatPasswordText.text);
+       print(result);
+
+      }
     }
   }
 

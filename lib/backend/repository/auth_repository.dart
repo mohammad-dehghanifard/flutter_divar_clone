@@ -19,6 +19,7 @@ class AuthRepository extends BaseRepository {
       "password_confirmation": confirmPass
     };
     final response = await dio.post("/register",data: data);
+    validateResponse(response);
     return AuthResponse.fromJson(response.data);
   }
 }
