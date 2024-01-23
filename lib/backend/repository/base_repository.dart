@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_divar_clone/helpers/resources/user_helper.dart';
 import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_instance/get_instance.dart';
 
 class BaseRepository {
   final dio = Dio(
@@ -11,6 +14,8 @@ class BaseRepository {
         },
        headers: {
          "Accept" : "application/json",
+         if(Get.isRegistered<UserHelper>())
+         "Authorization" : "Bearer ${Get.find<UserHelper>().token}"
        },
       contentType: "application/json"
     ),
