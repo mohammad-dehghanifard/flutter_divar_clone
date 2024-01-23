@@ -6,7 +6,6 @@ class AdsRepository extends BaseRepository {
     final Map<String,dynamic> params = {};
     final response = await dio.get("/ad",queryParameters: params);
     validateResponse(response);
-    print(response);
     return AdsResponse.fromJson(response.data);
   }
 }

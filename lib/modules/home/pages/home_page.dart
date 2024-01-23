@@ -11,10 +11,17 @@ class HomePage extends StatelessWidget {
     return GetBuilder<HomeController>(
       init: HomeController(),
       builder: (controller) {
-        return  const Scaffold(
-          body: SafeArea(child: Column(
+        return   Scaffold(
+          body: SafeArea(
+              child: Column(
             children: [
-              HomeAppBarWidget(title: "آگهی های جدید")
+              const HomeAppBarWidget(title: "آگهی های جدید"),
+              Expanded(
+                  child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        return Text("data");
+                      },)
+              )
             ],
           )),
         );
