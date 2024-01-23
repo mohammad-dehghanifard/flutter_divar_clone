@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/backend/repository/auth_repository.dart';
+import 'package:flutter_divar_clone/helpers/resources/user_helper.dart';
 import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
+import 'package:flutter_divar_clone/modules/home/pages/home_page.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
   //=========================== variables ========================================
@@ -38,11 +41,20 @@ class LoginController extends GetxController {
       loading = true;
       update();
       final result = await _repository.loginApi(mobile: phoneNumberText.text, password: passwordText.text);
-      if(result.user != null){
-        showSnackBar(message: "با موفقیت وارد شدید!", type: SnackBarType.success);
-      }
       loading = false;
       update();
+      if(result.user != null){
+        //save token
+        _saveToken(result.token!);
+        Get.put(UserHelper(result.token));
+        showSnackBar(message: "با موفقیت وارد شدید!", type: SnackBarType.success);
+        Get.off(const HomePage());
+      }
     }
+  }
+
+  Future<void> _saveToken(String token) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token',token);
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter_divar_clone/backend/repository/auth_repository.dart';
 import 'package:flutter_divar_clone/backend/response/auth_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
 import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
+import 'package:flutter_divar_clone/modules/auth/pages/login_page.dart';
 import 'package:get/get.dart';
 
 
@@ -102,6 +103,7 @@ class RegisterController extends GetxController {
             confirmPass: repeatPasswordText.text);
         loading = false;
         update();
+        Get.off(const LoginPage());
 
       }
     }
