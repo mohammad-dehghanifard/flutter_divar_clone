@@ -11,6 +11,7 @@ class HomeController extends GetxController {
   Future<void> fetchHomeAds() async {
     final result = await _adsRepository.getAndFilterAdsApi();
     adsResponse = result;
+    update();
   }
 //=========================== life cycle =======================================
 @override
