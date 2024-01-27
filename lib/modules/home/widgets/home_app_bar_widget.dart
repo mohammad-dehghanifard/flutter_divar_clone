@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_divar_clone/modules/home/widgets/ads_filter_menu_widget.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'app_bar_button.dart';
@@ -13,7 +14,7 @@ class HomeAppBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width,
-      height: 55,
+      height: 60,
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -28,7 +29,7 @@ class HomeAppBarWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          AppBarButton(onTap: () {},icon: Iconsax.sort,text: "جدیدترین"),
+          AdsFilterMenuWidget(),
           Text(title,style: const TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
           AppBarButton(onTap: () {},icon: Iconsax.location,text: "بوشهر"),
         ],
