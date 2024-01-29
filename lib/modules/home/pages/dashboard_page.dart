@@ -20,7 +20,7 @@ class DashboardPage extends StatelessWidget {
                   child: PageView(
                     controller: controller.pageController,
                     children: [
-                      HomePage(),
+                      const HomePage(),
                       Container(
                         width: double.infinity,
                         height: double.infinity,

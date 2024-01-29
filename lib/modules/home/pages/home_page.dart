@@ -15,27 +15,23 @@ class HomePage extends StatelessWidget {
     return GetBuilder<HomeController>(
         init: HomeController(),
         builder: (controller) {
-          return Scaffold(
-            body: SafeArea(
-                child: controller.adsResponse == null
-                    ? LoadingWidget(
-                        color: Theme.of(context).colorScheme.primary)
-                    : Column(
-                        children: [
-                          const HomeAppBarWidget(title: "آگهی های جدید"),
-                          Expanded(
-                              child: ListView.builder(
-                            padding: const EdgeInsets.all(Distance.bodyMargin),
-                            itemCount: controller.adsResponse!.data!.length,
-                            itemBuilder: (context, index) {
-                              final Advertising ads =
-                                  controller.adsResponse!.data![index];
-                              return AdsListItemWidget(ads: ads);
-                            },
-                          ))
-                        ],
-                      )),
-          );
+          return controller.adsResponse == null
+              ? LoadingWidget(color: Theme.of(context).colorScheme.primary)
+              : Column(
+                      children: [
+                        const HomeAppBarWidget(title: "آگهی های جدید"),
+                        Expanded(
+                            child: ListView.builder(
+                          padding: const EdgeInsets.all(Distance.bodyMargin),
+                          itemCount: controller.adsResponse!.data!.length,
+                          itemBuilder: (context, index) {
+                            final Advertising ads =
+                                controller.adsResponse!.data![index];
+                            return AdsListItemWidget(ads: ads);
+                          },
+                        ))
+                      ],
+                    );
         });
   }
 }
