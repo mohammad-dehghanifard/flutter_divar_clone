@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_divar_clone/modules/home/controller/home_controller.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class AdsFilterMenuWidget extends StatelessWidget {
-  const AdsFilterMenuWidget({super.key});
+import 'filter_menu_item.dart';
 
+class AdsFilterMenuWidget extends StatelessWidget {
+   AdsFilterMenuWidget({super.key});
+  final  homeController = Get.find<HomeController>();
   @override
   Widget build(BuildContext context) {
-    return PopupMenuButton(
+    return PopupMenuButton<Sort>(
+      onSelected: (value) => homeController.sortAds(value),
       icon: Column(
         children: [
           Icon(Iconsax.sort,color: Theme.of(context).colorScheme.primary),
@@ -20,29 +25,26 @@ class AdsFilterMenuWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         itemBuilder: (context) {
          return [
-           PopupMenuItem(child: Container(
-               padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-               decoration: const BoxDecoration(
-                   border: Border(bottom: BorderSide(color: Color(0xFFDEDEDE),width: 1))
-               ),
-               child: const Center(child: Text("جدیدترین ها")))),
-           PopupMenuItem(child: Container(
-               padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-               decoration: const BoxDecoration(
-                   border: Border(bottom: BorderSide(color: Color(0xFFDEDEDE),width: 1))
-               ),
-               child: const Center(child: Text("قدیمی ترین")))),
-           PopupMenuItem(child: Container(
-               padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-               decoration: const BoxDecoration(
-                   border: Border(bottom: BorderSide(color: Color(0xFFDEDEDE),width: 1))
-               ),
-               child: const Center(child: Text("گران ترین")))),
-           PopupMenuItem(child: Container(
-               padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-               child: const Center(child: Text("ارزان ترین")))),
+           // جدیدترین
+           PopupMenuItem<Sort>(
+               value: Sort(orderBy: 'id',orderType: "DESC"),
+               child: const FilterMenuItem(title: "جدیدترین ها",)),
+           // قدیمی ترین
+           PopupMenuItem(
+               value: Sort(orderBy: 'id',orderType: "ASC"),
+               child: const FilterMenuItem(title: "قدیمی ترین")),
+           // گران ترین
+           PopupMenuItem(
+               value: Sort(orderBy: 'price',orderType: "DESC"),
+               child: const FilterMenuItem(title: "گران ترین")),
+           // ارزان ترین
+           PopupMenuItem(
+               value: Sort(orderBy: 'price',orderType: "ASC"),
+               child: const FilterMenuItem(title: "ارزان ترین",showBorder: false)),
          ] ;
         },
     );
   }
 }
+
+
