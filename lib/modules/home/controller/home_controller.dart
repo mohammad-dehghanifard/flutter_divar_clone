@@ -1,3 +1,4 @@
+import 'package:flutter_divar_clone/backend/models/city.dart';
 import 'package:flutter_divar_clone/backend/repository/ads_repository.dart';
 import 'package:flutter_divar_clone/backend/response/ads_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
@@ -9,12 +10,18 @@ class HomeController extends GetxController {
   AdsResponse? adsResponse;
   Sort? sort;
   ProvinceResponse? provinces;
-  int? cityID;
+  City? selectedCity;
 
 //=========================== Methods ==========================================
   Future<void> fetchHomeAds() async {
-    final result = await _adsRepository.getAndFilterAdsApi(orderBy: sort?.orderBy,orderType: sort?.orderType,cityId: cityID);
+    final result = await _adsRepository.getAndFilterAdsApi(orderBy: sort?.orderBy,orderType: sort?.orderType,cityId: selectedCity?.id);
     adsResponse = result;
+    update();
+  }
+
+  Future<void> getAllProvince() async {
+    final result = await _adsRepository.getAllProvinceAndCityApi();
+    provinces = result;
     update();
   }
 
@@ -24,10 +31,26 @@ class HomeController extends GetxController {
     update();
   }
 
+  void onSelectCity(City city){
+    selectedCity = city;
+    update();
+  }
+
+  void filterAdsByCityId() {
+    if(selectedCity != null){
+      fetchHomeAds();
+      Get.back();
+      update();
+    }
+  }
+
+
+
 //=========================== life cycle =======================================
 @override
   void onInit() {
     fetchHomeAds();
+    getAllProvince();
     super.onInit();
   }
 }
