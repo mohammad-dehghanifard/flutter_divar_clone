@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/modules/home/controller/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-
 import 'filter_menu_item.dart';
 
 class AdsFilterMenuWidget extends StatelessWidget {
