@@ -3,7 +3,7 @@ import 'package:flutter_divar_clone/backend/models/advertising.dart';
 import 'package:flutter_divar_clone/backend/repository/ads_repository.dart';
 import 'package:get/get.dart';
 
-class SearchController extends GetxController {
+class AdsSearchController extends GetxController {
 //=========================== variables ========================================
   final AdsRepository _repository = AdsRepository();
   final TextEditingController searchText = TextEditingController();
