@@ -9,7 +9,9 @@ class AdsRepository extends BaseRepository {
     final Map<String,dynamic> params = {
       "order_by" : orderBy,
       "order_type" : orderType,
-      "city_id" : cityId
+      "city_id" : cityId,
+      if(categoryId != null)
+      "category_id" : categoryId
     };
     final response = await dio.get("/ad",queryParameters: params);
     validateResponse(response);

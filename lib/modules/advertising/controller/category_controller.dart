@@ -11,6 +11,8 @@ class CategoryController extends GetxController {
 
 //=========================== Methods ==========================================
   Future<void> fetchAllCategory() async {
+    adsList = null;
+    update();
     final result = await _repository.getAllCategoryApi();
     categoryResponse = result;
     update();
