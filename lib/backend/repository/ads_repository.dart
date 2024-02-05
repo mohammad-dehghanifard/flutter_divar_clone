@@ -11,7 +11,9 @@ class AdsRepository extends BaseRepository {
       "order_type" : orderType,
       "city_id" : cityId,
       if(categoryId != null)
-      "category_id" : categoryId
+      "category_id" : categoryId,
+      if(searchKeyWord != null)
+       "keyword" : searchKeyWord
     };
     final response = await dio.get("/ad",queryParameters: params);
     validateResponse(response);

@@ -13,7 +13,10 @@ class SearchPage extends StatelessWidget {
       child:  Column(
         children: [
           TextFieldWidget(
-              hintText: "آگهی مورد نظر خود را جستجو کنید",
+            onChange: (value) {
+
+            },
+            hintText: "آگهی مورد نظر خود را جستجو کنید",
             icon: Iconsax.search_normal,
             iconColor: Theme.of(context).colorScheme.primary,
           )
