@@ -23,7 +23,7 @@ class CategoryPage extends StatelessWidget {
                 itemCount: controller.categoryResponse!.data!.length,
                 itemBuilder: (context, index) {
                   final Category category = controller.categoryResponse!.data![index];
-                  return CategoryItemWidget(category: category,onTap: () {});
+                  return CategoryItemWidget(category: category);
                 },
               );
       },

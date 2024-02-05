@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/backend/models/category.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/resources/load_network_image.dart';
+import 'package:flutter_divar_clone/modules/advertising/pages/category_ads_page.dart';
+import 'package:get/get.dart';
 
 class CategoryItemWidget extends StatelessWidget {
   const CategoryItemWidget({
     super.key,
-    required this.category, required this.onTap,
+    required this.category
   });
 
   final Category category;
-  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () => Get.to(CategoryAdsPage(id: category.id!,name: category.name!,)),
       child: Container(
         margin: const EdgeInsets.only(bottom: Distance.bodyMargin),
         padding: const EdgeInsets.all(12),
