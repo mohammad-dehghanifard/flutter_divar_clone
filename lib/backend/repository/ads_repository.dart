@@ -1,5 +1,6 @@
 import 'package:flutter_divar_clone/backend/repository/base_repository.dart';
 import 'package:flutter_divar_clone/backend/response/ads_response.dart';
+import 'package:flutter_divar_clone/backend/response/category_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
 
 class AdsRepository extends BaseRepository {
@@ -18,5 +19,11 @@ class AdsRepository extends BaseRepository {
   Future<ProvinceResponse?> getAllProvinceAndCityApi() async {
     final response = await dio.get("/provinces");
     return ProvinceResponse.fromJson(response.data);
+  }
+  // get all category
+  Future<CategoryResponse> getAllCategoryApi() async {
+    final response = await dio.get("/categories");
+    validateResponse(response);
+    return CategoryResponse.fromJson(response.data);
   }
 }
