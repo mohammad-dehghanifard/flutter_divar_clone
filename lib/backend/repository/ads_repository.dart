@@ -3,6 +3,7 @@ import 'package:flutter_divar_clone/backend/response/ads_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
 
 class AdsRepository extends BaseRepository {
+  // get all ads
   Future<AdsResponse> getAndFilterAdsApi({int? cityId, int? provinceId, int? categoryId, String? orderBy, String? orderType, String? searchKeyWord}) async {
     final Map<String,dynamic> params = {
       "order_by" : orderBy,
