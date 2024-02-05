@@ -6,6 +6,7 @@ import 'package:iconsax/iconsax.dart';
 class DashboardController extends GetxController {
 //=========================== variables ========================================
   final PageController pageController = PageController();
+  String appBarText = "آگهی های جدید";
   int currentPage = 0;
   List<NavItem> navList = [
     const NavItem(icon: Iconsax.home, label: "خانه"),
@@ -18,6 +19,11 @@ class DashboardController extends GetxController {
 //=========================== Methods ==========================================
   void onChangePage(int newPage) {
     currentPage = newPage;
+    if(newPage == 0){
+      appBarText = "آگهی های جدید";
+    }else {
+      appBarText = navList[newPage].label;
+    }
     pageController.animateToPage(newPage, duration: const Duration(milliseconds: 700), curve: Curves.linear);
     update();
   }

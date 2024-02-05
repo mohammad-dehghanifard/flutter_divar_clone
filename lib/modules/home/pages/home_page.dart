@@ -19,10 +19,7 @@ class HomePage extends StatelessWidget {
               ? LoadingWidget(color: Theme.of(context).colorScheme.primary)
               : Column(
                       children: [
-                         HomeAppBarWidget(
-                             title: "آگهی های جدید",
-                              cityName: controller.selectedCity != null? controller.selectedCity!.name! : "انتخاب شهر",
-                         ),
+
                         Expanded(
                             child: ListView.builder(
                           padding: const EdgeInsets.all(Distance.bodyMargin),
