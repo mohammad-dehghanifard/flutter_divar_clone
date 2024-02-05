@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/modules/advertising/pages/category_page.dart';
+import 'package:flutter_divar_clone/modules/advertising/pages/search_page.dart';
 import 'package:flutter_divar_clone/modules/home/controller/dashboard_controller.dart';
 import 'package:flutter_divar_clone/modules/home/controller/home_controller.dart';
 import 'package:flutter_divar_clone/modules/home/pages/home_page.dart';
@@ -33,11 +34,7 @@ class DashboardPage extends StatelessWidget {
                     children: [
                       const HomePage(),
                       const CategoryPage(),
-                      Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        color: Colors.redAccent,
-                      ),
+                      const SearchPage(),
                       Container(
                         width: double.infinity,
                         height: double.infinity,

@@ -11,7 +11,8 @@ class TextFieldWidget extends StatefulWidget {
     this.radius = 12.0,
     this.type = TextInputType.text,
     this.maxLine,
-    this.haseBorder = true
+    this.haseBorder = true,
+    this.iconColor = const Color(0xFF959595), this.onChange
   });
 
   final TextEditingController? controller;
@@ -22,6 +23,8 @@ class TextFieldWidget extends StatefulWidget {
   final int? maxLine;
   final String? Function(String? value)? validator;
   final bool haseBorder;
+  final Color iconColor;
+  final Function(String)? onChange;
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -38,6 +41,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       maxLines: widget.type == TextInputType.visiblePassword? 1 :widget.maxLine,
       keyboardType: widget.type,
       validator: widget.validator,
+      onChanged: widget.onChange,
       decoration:  InputDecoration(
         hintText: widget.hintText,
         hintStyle: const TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: Color(0xFF959595)),
@@ -52,7 +56,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           child: Icon(
              widget.type == TextInputType.visiblePassword?  (_obscure?  CupertinoIcons.eye  : CupertinoIcons.eye_slash )
                  : widget.icon,
-              color: const Color(0xFF959595)),
+              color: widget.iconColor),
         ),
         filled: true,
         fillColor: widget.haseBorder? const Color(0xFFFFFFFF) : const Color(0xFFEFEFEF) ,
