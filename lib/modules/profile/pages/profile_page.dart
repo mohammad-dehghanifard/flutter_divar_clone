@@ -38,12 +38,34 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(height: 12),
               // user name
               Text(controller.userInfo!.name ?? "",style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 14)),
-              // buttons
+              const SizedBox(height: 32),
+              // edit user button
               ProfileButton(
                 onTap: () {},
                 text: "ویرایش پروفایل",
                 icon: Iconsax.user_edit,
-              )
+              ),
+              const SizedBox(height: 16),
+              // my ads button
+              ProfileButton(
+                onTap: () {},
+                text: "آگهی های من",
+                icon: Iconsax.task_square,
+              ),
+              const SizedBox(height: 16),
+              // book mark button
+              ProfileButton(
+                onTap: () {},
+                text: "نشان ها",
+                icon: Iconsax.save_2,
+              ),
+              const SizedBox(height: 16),
+              // log out button
+              ProfileButton(
+                onTap: () {},
+                text: "خروج از حساب",
+                icon: Iconsax.logout,
+              ),
             ],
           ),
         );
