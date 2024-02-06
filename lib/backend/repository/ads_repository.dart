@@ -1,3 +1,4 @@
+import 'package:flutter_divar_clone/backend/models/ads_detail.dart';
 import 'package:flutter_divar_clone/backend/repository/base_repository.dart';
 import 'package:flutter_divar_clone/backend/response/ads_response.dart';
 import 'package:flutter_divar_clone/backend/response/category_response.dart';
@@ -29,5 +30,11 @@ class AdsRepository extends BaseRepository {
     final response = await dio.get("/categories");
     validateResponse(response);
     return CategoryResponse.fromJson(response.data);
+  }
+  // get ads detail
+  Future<AdsDetail> getAdsDetailApi({required int id}) async {
+    final response  = await dio.get("/ad/$id");
+    validateResponse(response);
+    return AdsDetail.fromJson(response.data['data']);
   }
 }
