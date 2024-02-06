@@ -6,6 +6,7 @@ import 'package:flutter_divar_clone/modules/home/controller/home_controller.dart
 import 'package:flutter_divar_clone/modules/home/pages/home_page.dart';
 import 'package:flutter_divar_clone/modules/home/widgets/button_navigation_widget.dart';
 import 'package:flutter_divar_clone/modules/home/widgets/home_app_bar_widget.dart';
+import 'package:flutter_divar_clone/modules/profile/pages/profile_page.dart';
 import 'package:get/get.dart';
 
 class DashboardPage extends StatelessWidget {
@@ -31,15 +32,11 @@ class DashboardPage extends StatelessWidget {
                 Expanded(
                   child: PageView(
                     controller: controller.pageController,
-                    children: [
-                      const HomePage(),
-                      const CategoryPage(),
-                      const SearchPage(),
-                      Container(
-                        width: double.infinity,
-                        height: double.infinity,
-                        color: Colors.amber,
-                      ),
+                    children: const [
+                      HomePage(),
+                      CategoryPage(),
+                      SearchPage(),
+                      ProfilePage()
                     ],
                   ),
                 ),
