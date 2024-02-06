@@ -10,7 +10,7 @@ class ButtonWidget extends StatelessWidget {
     this.radius = 12,
     this.filled = true,
     this.loading = false,
-    super.key,
+    super.key, this.icon,
   });
 
   final Function() onTap;
@@ -20,6 +20,7 @@ class ButtonWidget extends StatelessWidget {
   final double radius;
   final bool filled;
   final bool loading;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,17 @@ class ButtonWidget extends StatelessWidget {
         color: Theme.of(context).colorScheme.onPrimary,
         size: 20,
       )
-          : Text(text,style: TextStyle(color: filled ? Colors.white : Theme.of(context).colorScheme.primary,fontWeight: FontWeight.w500,fontSize: 16)),
+          : Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(text,style: TextStyle(color: filled ? Colors.white : Theme.of(context).colorScheme.primary,fontWeight: FontWeight.w500,fontSize: 16)),
+              if(icon != null)...[
+                const SizedBox(width: 6),
+                Icon(icon,color: Colors.white),
+              ]
+
+            ],
+          ),
     );
   }
 }

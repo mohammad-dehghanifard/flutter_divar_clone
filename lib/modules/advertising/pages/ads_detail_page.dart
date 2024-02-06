@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/resources/load_network_image.dart';
+import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
 import 'package:flutter_divar_clone/helpers/widgets/loading_widget.dart';
 import 'package:flutter_divar_clone/modules/advertising/controller/ads_detail_controller.dart';
+import 'package:flutter_divar_clone/modules/advertising/widgets/connect_info_bottom_sheet.dart';
 import 'package:flutter_divar_clone/modules/advertising/widgets/detail_action_button.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -20,11 +21,12 @@ class AdsDetailPage extends StatelessWidget {
             return controller.detail == null?
               LoadingWidget(color: Theme.of(context).colorScheme.primary)
                 : Padding(
-                  padding: const EdgeInsets.all(Distance.bodyMargin),
+                  padding: const EdgeInsets.all(16),
                   child: SizedBox(
                     width: double.infinity,
                     height: double.infinity,
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             // image
                             Stack(
@@ -32,14 +34,14 @@ class AdsDetailPage extends StatelessWidget {
                               children: [
                                 // ads image
                                 SizedBox(
-                                  width: 350,
+                                  width: double.infinity,
                                   height: 350,
                                   child: LoadNetworkImage(
                                       imageUrl: controller.detail!.image!),
                                 ),
                                 // actions
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 24,vertical: 8),
+                                  padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 8),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
@@ -57,6 +59,63 @@ class AdsDetailPage extends StatelessWidget {
                                   ),
                                 )
                               ],
+                            ),
+                            const SizedBox(height: 16),
+                            // ads title
+                            Text(controller.detail!.title ?? "",style: const TextStyle(fontSize: 16,fontWeight: FontWeight.bold)),
+                            const SizedBox(height: 16),
+                            // description
+                            const Text("توضیحات",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold)),
+                            const SizedBox(height: 8),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadiusDirectional.circular(12)
+                              ),
+                              child: Text(controller.detail!.description ?? "",style: const TextStyle(color: Color(0xFF606060))),
+                            ),
+                            // price
+                            const SizedBox(height: 16),
+                            Container(
+                              width: double.infinity,
+                              padding: const EdgeInsets.all(16),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadiusDirectional.circular(12)
+                              ),
+                              child: Row(
+                                children: [
+                                 const Text("قیمت",style: TextStyle(color: Color(0xFF606060))),
+                                 const Spacer(),
+                                 Text(controller.detail!.price?? "",style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                                 const SizedBox(width: 8),
+                                 const Text("تومان",style: TextStyle(color: Color(0xFFA7A7A7),fontWeight: FontWeight.w700)),
+                                ],
+                              ),
+                            ),
+                            const Spacer(),
+                            // call info button
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: ButtonWidget(
+                                  width: 160,
+                                  radius: 60,
+                                  icon: Iconsax.call,
+                                  onTap: () {
+                                    showModalBottomSheet(
+
+                                      context: context,
+                                      builder: (context) =>
+                                          ConnectInfoBottomSheet(
+                                              mobile: controller.detail!
+                                                      .contactInfo!.mobile ?? "",
+                                              address: controller.detail!
+                                                      .contactInfo!.address ?? ""),
+                                    );
+                                  },
+                                  text: "اطلاعات تماس"),
                             )
                           ],
                         ),
