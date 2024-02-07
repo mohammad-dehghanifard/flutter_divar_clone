@@ -1,11 +1,16 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:flutter_divar_clone/backend/models/category.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
 import 'package:get/get.dart';
 
-class SelectCategoryBottomSheet extends StatelessWidget {
-  const SelectCategoryBottomSheet({super.key});
+import 'category_text_item_widget.dart';
 
+class SelectCategoryBottomSheet extends StatelessWidget {
+   SelectCategoryBottomSheet({super.key,required this.list});
+  List<Category> list;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,11 +26,14 @@ class SelectCategoryBottomSheet extends StatelessWidget {
       child: Column(
         children: [
           const Text("انتخاب دسته بندی",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+          const SizedBox(height: 16),
           // category list
           Expanded(child: ListView.builder(
-            itemCount: 10,
+            itemCount: list.length,
             itemBuilder: (context, index) {
-              return Text("item $index");
+              return CategoryTextItemWidget(
+                  onTap: () {},
+                  category: list[index]);
             },
           ),),
           ButtonWidget(
@@ -37,3 +45,5 @@ class SelectCategoryBottomSheet extends StatelessWidget {
     );
   }
 }
+
+
