@@ -7,6 +7,7 @@ import 'package:flutter_divar_clone/modules/advertising/controller/create_ads_co
 import 'package:flutter_divar_clone/modules/advertising/widgets/select_image_button.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class SelectImageBottomSheet extends StatelessWidget {
@@ -31,13 +32,19 @@ class SelectImageBottomSheet extends StatelessWidget {
                 children: [
                   // camera
                   SelectImageButton(
-                        onTap: () {},
+                        onTap: () {
+                          Get.back();
+                          return controller.setImageForAds(ImageSource.camera);
+                        },
                         icon: CupertinoIcons.camera,
                         title: "گرفتن عکس",
                       ),
                   // gallery
                   SelectImageButton(
-                        onTap: () {},
+                        onTap: () {
+                          Get.back();
+                          return controller.setImageForAds(ImageSource.gallery);
+                        },
                         icon: Iconsax.gallery,
                         title: "از گالری",
                       ),

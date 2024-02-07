@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
@@ -36,6 +38,15 @@ class AddNewAds extends StatelessWidget {
                         LoadingWidget(color: Theme.of(context).colorScheme.primary)
                             : Column(
                           children: [
+                            // ads image
+                            if(controller.image != null)
+                              SizedBox(
+                                  width: double.infinity,
+                                  height: 230,
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.file(File(controller.image!.path),height: 24,fit: BoxFit.cover,))),
+                            const SizedBox(height: 12),
                             // title
                             const TextFieldWidget(hintText: "عنوان آگهی را وارد کنید"),
                             const SizedBox(height: 12),
@@ -65,7 +76,7 @@ class AddNewAds extends StatelessWidget {
                                     builder:(context) => const SelectImageBottomSheet(),
                                 );
                               },
-                              child: const Row(
+                              child:  const Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("تصویر آگهی را انتخاب کنید",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: Color(0xFF959595)),),
