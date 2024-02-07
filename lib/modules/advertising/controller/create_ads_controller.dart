@@ -4,16 +4,20 @@ import 'package:flutter_divar_clone/backend/models/province.dart';
 import 'package:flutter_divar_clone/backend/repository/ads_repository.dart';
 import 'package:flutter_divar_clone/backend/response/category_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
+import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CreateAdsController extends GetxController {
 //=========================== variables ========================================
   final AdsRepository _repository = AdsRepository();
+  final ImagePicker picker = ImagePicker();
   CategoryResponse? categoryResponse;
   ProvinceResponse? provinceResponse;
   Category? selectedCategory;
   Province? selectedProvince;
   City? selectCity;
+  XFile? image;
 
 //=========================== Methods ==========================================
 
@@ -42,6 +46,17 @@ class CreateAdsController extends GetxController {
   void changeCity(City newCity){
     selectCity = newCity;
     update();
+  }
+
+  Future<void> setImageForAds(ImageSource source) async {
+    final XFile? result = await picker.pickImage(source: source);
+    if(result != null){
+      image = result;
+      showSnackBar(message: "عکس با موفقیت انتخاب شد", type: SnackBarType.success);
+      update();
+    } else {
+      showSnackBar(message: "هیچ عکسی انتخاب نکردید!", type: SnackBarType.error);
+    }
   }
 
 //=========================== LifeCycle ========================================
