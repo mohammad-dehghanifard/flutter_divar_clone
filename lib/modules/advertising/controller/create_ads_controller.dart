@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_divar_clone/backend/models/category.dart';
 import 'package:flutter_divar_clone/backend/models/city.dart';
 import 'package:flutter_divar_clone/backend/models/province.dart';
@@ -12,6 +13,10 @@ class CreateAdsController extends GetxController {
 //=========================== variables ========================================
   final AdsRepository _repository = AdsRepository();
   final ImagePicker picker = ImagePicker();
+  final TextEditingController adsTitleTxt = TextEditingController();
+  final TextEditingController descriptionTxt = TextEditingController();
+  final TextEditingController priceTxt = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   CategoryResponse? categoryResponse;
   ProvinceResponse? provinceResponse;
   Category? selectedCategory;
@@ -56,6 +61,37 @@ class CreateAdsController extends GetxController {
       update();
     } else {
       showSnackBar(message: "هیچ عکسی انتخاب نکردید!", type: SnackBarType.error);
+    }
+  }
+
+  String? validateAdsTitleForm(String? value){
+    if(value!.isEmpty){
+      return "لطفا یک عنوان برای آگهی وارد کنید";
+    } else if(value.length < 8){
+      return "عنوان وارد شده بسیار کوتاه میباشد";
+    }
+    return null;
+  }
+
+  String? validateAdsDescriptionForm(String? value){
+    if(value!.isEmpty){
+      return "لطفا توضیحات آگهی خود را وارد کنید";
+    } else if(value.length < 8){
+      return "توضیحات وارد شده بسیار کوتاه میباشد";
+    }
+    return null;
+  }
+
+  String? validateAdsPriceForm(String? value){
+    if(value!.isEmpty){
+      return "وارد کردن مبلغ آگهی الزامی میباشد!";
+    }
+    return null;
+  }
+
+  Future<void> saveAds() async {
+    if(formKey.currentState!.validate()){
+
     }
   }
 

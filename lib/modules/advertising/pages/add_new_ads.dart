@@ -34,6 +34,7 @@ class AddNewAds extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(Distance.bodyMargin),
                     child: Form(
+                      key: controller.formKey,
                         child: controller.provinceResponse == null || controller.categoryResponse == null ?
                         LoadingWidget(color: Theme.of(context).colorScheme.primary)
                             : Column(
@@ -48,7 +49,10 @@ class AddNewAds extends StatelessWidget {
                                       child: Image.file(File(controller.image!.path),height: 24,fit: BoxFit.cover,))),
                             const SizedBox(height: 12),
                             // title
-                            const TextFieldWidget(hintText: "عنوان آگهی را وارد کنید"),
+                             TextFieldWidget(
+                                 controller: controller.adsTitleTxt,
+                                 validator: controller.validateAdsTitleForm,
+                                 hintText: "عنوان آگهی را وارد کنید"),
                             const SizedBox(height: 12),
                             // setCategory
                             CreateAdsActionButton(
@@ -63,10 +67,16 @@ class AddNewAds extends StatelessWidget {
                             ),
                             const SizedBox(height: 12),
                             // description
-                            const TextFieldWidget(hintText: "توضیحات آگهی را وارد کنید",maxLine: 3),
+                            TextFieldWidget(
+                                controller: controller.descriptionTxt,
+                                validator: controller.validateAdsDescriptionForm,
+                                hintText: "توضیحات آگهی را وارد کنید",maxLine: 3),
                             const SizedBox(height: 12),
                             // price
-                            const TextFieldWidget(hintText: "قیمت آگهی را وارد کنید",type: TextInputType.number),
+                            TextFieldWidget(
+                                controller: controller.priceTxt,
+                                validator: controller.validateAdsPriceForm,
+                                hintText: "قیمت آگهی را وارد کنید",type: TextInputType.number),
                             const SizedBox(height: 12),
                             // set image
                             CreateAdsActionButton(
@@ -114,7 +124,7 @@ class AddNewAds extends StatelessWidget {
                             SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
                             // create ads btn
                             ButtonWidget(
-                                onTap: () {},
+                                onTap: controller.saveAds,
                                 text: 'ثبت آگهی')
                           ],
                         )
