@@ -9,6 +9,7 @@ import 'package:flutter_divar_clone/modules/advertising/controller/create_ads_co
 import 'package:flutter_divar_clone/modules/advertising/widgets/create_ads_action_button.dart';
 import 'package:flutter_divar_clone/modules/advertising/widgets/select_category_bottom_sheet_widget.dart';
 import 'package:flutter_divar_clone/modules/advertising/widgets/select_city_bottom_sheet.dart';
+import 'package:flutter_divar_clone/modules/advertising/widgets/select_image_bottom_sheet.dart';
 import 'package:flutter_divar_clone/modules/advertising/widgets/select_perovince_bottom_sheet.dart';
 import 'package:flutter_divar_clone/modules/auth/widgets/select_province_and_city_button.dart';
 import 'package:get/get.dart';
@@ -58,11 +59,16 @@ class AddNewAds extends StatelessWidget {
                             const SizedBox(height: 12),
                             // set image
                             CreateAdsActionButton(
-                              onTap: () {},
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    builder:(context) => const SelectImageBottomSheet(),
+                                );
+                              },
                               child: const Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("دسته بندی آگهی را انتخاب کنید",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: Color(0xFF959595)),),
+                                  Text("تصویر آگهی را انتخاب کنید",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: Color(0xFF959595)),),
                                   Icon(Iconsax.gallery,color: Color(0xFF959595))
                                 ],
                               )
