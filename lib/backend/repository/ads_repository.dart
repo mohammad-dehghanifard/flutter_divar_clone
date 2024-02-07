@@ -37,4 +37,5 @@ class AdsRepository extends BaseRepository {
     validateResponse(response);
     return AdsDetail.fromJson(response.data['data']);
   }
+
 }
