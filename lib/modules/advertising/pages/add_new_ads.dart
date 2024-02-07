@@ -42,7 +42,9 @@ class AddNewAds extends StatelessWidget {
                                     context: context,
                                     builder: (context) =>  SelectCategoryBottomSheet(list: controller.categoryResponse!.data!));
                               },
-                              child: const Text("دسته بندی آگهی را انتخاب کنید",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: Color(0xFF959595)),),
+                              child:  Text(
+                                controller.selectedCategory == null? "دسته بندی آگهی را انتخاب کنید" : controller.selectedCategory!.name!,
+                                style: const TextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: Color(0xFF959595)),),
                             ),
                             const SizedBox(height: 12),
                             // description
@@ -66,7 +68,11 @@ class AddNewAds extends StatelessWidget {
                             // province and city
                             Row(
                               children: [
-                                Expanded(child: SelectProvinceAndCityButton(text: "استان", onTap: () {},)),
+                                Expanded(child: SelectProvinceAndCityButton(text: "استان", onTap: () {
+                                  showModalBottomSheet(
+                                      context: context,
+                                      builder: (context) =>  SelectCategoryBottomSheet(list: controller.categoryResponse!.data!));
+                                },)),
                                 const SizedBox(width: 16),
                                 Expanded(child: SelectProvinceAndCityButton(text: "شهر", onTap: () {},)),
                               ],
