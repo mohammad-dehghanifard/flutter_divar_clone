@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_divar_clone/modules/advertising/pages/add_new_ads.dart';
 import 'package:flutter_divar_clone/modules/home/controller/dashboard_controller.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ButtonNavigationWidget extends StatelessWidget {
@@ -29,21 +31,24 @@ class ButtonNavigationWidget extends StatelessWidget {
                 // add new ads button
                 Align(
                   alignment: Alignment.center,
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    margin: const EdgeInsets.only(bottom: 8),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                      borderRadius: BorderRadius.circular(12),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.16),
-                            blurRadius: 6,offset: const Offset(0,3)
-                        )
-                      ],
+                  child: GestureDetector(
+                    onTap: () => Get.to(const AddNewAds()),
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      margin: const EdgeInsets.only(bottom: 8),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.16),
+                              blurRadius: 6,offset: const Offset(0,3)
+                          )
+                        ],
+                      ),
+                      child: const Icon(Iconsax.add_square,color: Colors.white),
                     ),
-                    child: const Icon(Iconsax.add_square,color: Colors.white),
                   ),
                 ),
                 Row(
