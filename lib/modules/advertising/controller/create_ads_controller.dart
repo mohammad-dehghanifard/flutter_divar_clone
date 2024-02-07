@@ -6,6 +6,7 @@ import 'package:flutter_divar_clone/backend/repository/ads_repository.dart';
 import 'package:flutter_divar_clone/backend/response/category_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
 import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
+import 'package:flutter_divar_clone/modules/home/controller/home_controller.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -91,7 +92,29 @@ class CreateAdsController extends GetxController {
 
   Future<void> saveAds() async {
     if(formKey.currentState!.validate()){
+      if(image == null){
+        showSnackBar(message: "لطفا یک عکس برای آگهی خود انتخاب کنید", type: SnackBarType.error);
+      }else if(selectedCategory == null){
+        showSnackBar(message: "لطفا یک دسته بندی برای آگهی خود انتخاب کنید", type: SnackBarType.error);
+      } else if (selectedProvince == null || selectCity == null){
+        showSnackBar(message: "لطفا استان و شهر آگهی خود انتخاب کنید", type: SnackBarType.error);
+      } else {
+        final result = await _repository.createNewAdsApi(
+            title: adsTitleTxt.text,
+            description: descriptionTxt.text,
+            price: priceTxt.text,
+            categoryId: selectedCategory!.id!,
+            cityId: selectCity!.id!,
+            image: image!);
+        if(result){
+          Get.back();
+          showSnackBar(message: "آگهی مورد نظر با موفقیت ایجاد شد!", type: SnackBarType.success);
+          Get.find<HomeController>().fetchHomeAds();
+        }else {
+          showSnackBar(message: "خطایی رخ داده مجددا تلاش کنید", type: SnackBarType.error);
 
+        }
+      }
     }
   }
 

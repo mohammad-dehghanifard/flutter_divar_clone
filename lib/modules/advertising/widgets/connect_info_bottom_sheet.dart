@@ -11,6 +11,13 @@ class ConnectInfoBottomSheet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(Distance.bodyMargin),
       width: double.infinity,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(32),
+          topLeft: Radius.circular(32),
+        )
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
