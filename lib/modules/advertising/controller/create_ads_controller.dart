@@ -1,4 +1,5 @@
 import 'package:flutter_divar_clone/backend/models/category.dart';
+import 'package:flutter_divar_clone/backend/models/city.dart';
 import 'package:flutter_divar_clone/backend/models/province.dart';
 import 'package:flutter_divar_clone/backend/repository/ads_repository.dart';
 import 'package:flutter_divar_clone/backend/response/category_response.dart';
@@ -12,6 +13,7 @@ class CreateAdsController extends GetxController {
   ProvinceResponse? provinceResponse;
   Category? selectedCategory;
   Province? selectedProvince;
+  City? selectCity;
 
 //=========================== Methods ==========================================
 
@@ -29,6 +31,16 @@ class CreateAdsController extends GetxController {
 
   void changeCategory(Category newCategory){
     selectedCategory = newCategory;
+    update();
+  }
+
+  void changeProvince(Province newProvince){
+    selectedProvince = newProvince;
+    update();
+  }
+
+  void changeCity(City newCity){
+    selectCity = newCity;
     update();
   }
 

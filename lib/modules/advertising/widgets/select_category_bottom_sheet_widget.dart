@@ -7,7 +7,7 @@ import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
 import 'package:flutter_divar_clone/modules/advertising/controller/create_ads_controller.dart';
 import 'package:get/get.dart';
 
-import 'category_text_item_widget.dart';
+import 'text_item_widget.dart';
 
 class SelectCategoryBottomSheet extends StatelessWidget {
    SelectCategoryBottomSheet({super.key,required this.list});
@@ -34,10 +34,10 @@ class SelectCategoryBottomSheet extends StatelessWidget {
               Expanded(child: ListView.builder(
                 itemCount: list.length,
                 itemBuilder: (context, index) {
-                  return CategoryTextItemWidget(
+                  return TextItemWidget(
                       onTap: () => controller.changeCategory(list[index]),
                       selected: list[index].id! == controller.selectedCategory?.id,
-                      category: list[index]);
+                      text: list[index].name!);
                 },
               ),),
               ButtonWidget(

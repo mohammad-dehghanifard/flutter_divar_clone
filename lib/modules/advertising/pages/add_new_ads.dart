@@ -3,10 +3,13 @@ import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
 import 'package:flutter_divar_clone/helpers/widgets/loading_widget.dart';
 import 'package:flutter_divar_clone/helpers/widgets/page_app_bar_widget.dart';
+import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
 import 'package:flutter_divar_clone/helpers/widgets/text_field_widget.dart';
 import 'package:flutter_divar_clone/modules/advertising/controller/create_ads_controller.dart';
 import 'package:flutter_divar_clone/modules/advertising/widgets/create_ads_action_button.dart';
 import 'package:flutter_divar_clone/modules/advertising/widgets/select_category_bottom_sheet_widget.dart';
+import 'package:flutter_divar_clone/modules/advertising/widgets/select_city_bottom_sheet.dart';
+import 'package:flutter_divar_clone/modules/advertising/widgets/select_perovince_bottom_sheet.dart';
 import 'package:flutter_divar_clone/modules/auth/widgets/select_province_and_city_button.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -68,13 +71,27 @@ class AddNewAds extends StatelessWidget {
                             // province and city
                             Row(
                               children: [
-                                Expanded(child: SelectProvinceAndCityButton(text: "استان", onTap: () {
+                                // select province
+                                Expanded(child: SelectProvinceAndCityButton(
+                                  text: controller.selectedProvince == null? "استان" : controller.selectedProvince!.name!,
+                                  onTap: () {
                                   showModalBottomSheet(
                                       context: context,
-                                      builder: (context) =>  SelectCategoryBottomSheet(list: controller.categoryResponse!.data!));
+                                      builder: (context) =>  SelectProvinceBottomSheet(list: controller.provinceResponse!.provinceList!));
                                 },)),
                                 const SizedBox(width: 16),
-                                Expanded(child: SelectProvinceAndCityButton(text: "شهر", onTap: () {},)),
+                                // select city
+                                Expanded(child: SelectProvinceAndCityButton(
+                                  text: controller.selectCity == null ?"شهر" : controller.selectCity!.name!,
+                                  onTap: () {
+                                  if(controller.selectedProvince == null){
+                                    showSnackBar(message: "لطفا ابتدا یک استان انتخاب کنید", type: SnackBarType.error);
+                                  }else {
+                                    showModalBottomSheet(
+                                        context: context,
+                                        builder: (context) =>  SelectCityBottomSheet(list: controller.selectedProvince!.cities!));
+                                  }
+                                },)),
                               ],
                             ),
                             SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),

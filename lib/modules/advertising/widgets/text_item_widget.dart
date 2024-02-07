@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_divar_clone/backend/models/category.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 
-class CategoryTextItemWidget extends StatelessWidget {
-  const CategoryTextItemWidget({
+class TextItemWidget extends StatelessWidget {
+  const TextItemWidget({
     super.key,
-    required this.category,
+    required this.text,
     this.selected = false, required this.onTap
   });
 
-  final Category category;
+  final String text;
   final bool selected;
   final Function() onTap;
 
@@ -29,7 +28,7 @@ class CategoryTextItemWidget extends StatelessWidget {
           ),
           child: Center(
               child: Text(
-                category.name!,
+                text,
                 style:  TextStyle(
                     fontSize: 16,
                     color: selected? Colors.white : Colors.black,
