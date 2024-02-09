@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
+import 'package:flutter_divar_clone/helpers/widgets/loading_widget.dart';
 import 'package:flutter_divar_clone/helpers/widgets/page_app_bar_widget.dart';
 import 'package:flutter_divar_clone/helpers/widgets/select_province_and_city_button.dart';
 import 'package:flutter_divar_clone/helpers/widgets/text_field_widget.dart';
@@ -28,7 +29,9 @@ class EditProfilePage extends StatelessWidget {
                   builder: (controller) {
                     return Form(
                       key: controller.formKey,
-                      child: Column(
+                      child: controller.provinceResponse == null?
+                            Center(child: LoadingWidget(color: Theme.of(context).colorScheme.primary))
+                          :Column(
                         children: [
                           // profile image
                           Container(
@@ -43,7 +46,7 @@ class EditProfilePage extends StatelessWidget {
                           ),
                           // change avatar btn
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () => controller.setAvatarImage(),
                               child: const Text("انتخاب عکس پروفایل",style: TextStyle(color: Color(0xFF959595)))),
                           // name and lastname text field
                           TextFieldWidget(
@@ -58,9 +61,16 @@ class EditProfilePage extends StatelessWidget {
                                 showDialog(
                                     context: context,
                                     builder: (context) => const EditProvinceAndCityDialog());
-                              },text: "استان",)),
+                              },text: controller.selectedProvince != null ? controller.selectedProvince!.name! :"استان",
+                              )),
                               const SizedBox(width: 12),
-                              Expanded(child: SelectProvinceAndCityButton(onTap: () {},text: "شهر",)),
+                              Expanded(child: SelectProvinceAndCityButton(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => const EditProvinceAndCityDialog());
+                                },
+                                text: controller.selectedCity != null? controller.selectedCity!.name! : "شهر",)),
                             ],
                           ),
                           const SizedBox(height: 12),
