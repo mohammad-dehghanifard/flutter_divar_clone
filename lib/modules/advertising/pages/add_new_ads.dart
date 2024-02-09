@@ -13,7 +13,7 @@ import 'package:flutter_divar_clone/modules/advertising/widgets/select_category_
 import 'package:flutter_divar_clone/modules/advertising/widgets/select_city_bottom_sheet.dart';
 import 'package:flutter_divar_clone/modules/advertising/widgets/select_image_bottom_sheet.dart';
 import 'package:flutter_divar_clone/modules/advertising/widgets/select_perovince_bottom_sheet.dart';
-import 'package:flutter_divar_clone/modules/auth/widgets/select_province_and_city_button.dart';
+import 'package:flutter_divar_clone/helpers/widgets/select_province_and_city_button.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 

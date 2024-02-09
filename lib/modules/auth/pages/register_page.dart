@@ -7,7 +7,7 @@ import 'package:flutter_divar_clone/modules/auth/pages/login_page.dart';
 import 'package:flutter_divar_clone/modules/auth/widgets/auth_page_app_bar_widget.dart';
 import 'package:flutter_divar_clone/modules/auth/widgets/auth_page_footer_widget.dart';
 import 'package:flutter_divar_clone/modules/auth/widgets/province_and_city_dialog.dart';
-import 'package:flutter_divar_clone/modules/auth/widgets/select_province_and_city_button.dart';
+import 'package:flutter_divar_clone/helpers/widgets/select_province_and_city_button.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 

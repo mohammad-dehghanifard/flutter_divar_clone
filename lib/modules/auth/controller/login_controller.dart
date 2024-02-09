@@ -47,9 +47,9 @@ class LoginController extends GetxController {
       if(result.user != null){
         //save token
         _saveToken(result.token!);
-        Get.put(UserHelper(result.token));
         showSnackBar(message: "با موفقیت وارد شدید!", type: SnackBarType.success);
         Get.off(const DashboardPage());
+        Get.put(UserHelper(result.token));
       }
     }
   }

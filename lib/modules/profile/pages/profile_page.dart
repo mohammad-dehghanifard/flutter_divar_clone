@@ -3,6 +3,7 @@ import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/resources/load_network_image.dart';
 import 'package:flutter_divar_clone/helpers/widgets/loading_widget.dart';
 import 'package:flutter_divar_clone/modules/profile/controller/profile_controller.dart';
+import 'package:flutter_divar_clone/modules/profile/pages/edit_profile_page.dart';
 import 'package:flutter_divar_clone/modules/profile/widgets/profile_button.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -41,7 +42,7 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(height: 32),
               // edit user button
               ProfileButton(
-                onTap: () {},
+                onTap: () => Get.to(const EditProfilePage()),
                 text: "ویرایش پروفایل",
                 icon: Iconsax.user_edit,
               ),
