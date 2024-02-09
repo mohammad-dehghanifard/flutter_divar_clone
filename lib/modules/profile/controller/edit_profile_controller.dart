@@ -4,6 +4,7 @@ import 'package:flutter_divar_clone/backend/models/province.dart';
 import 'package:flutter_divar_clone/backend/repository/profile_repository.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
 import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
+import 'package:flutter_divar_clone/modules/profile/controller/profile_controller.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -14,6 +15,7 @@ class EditProfileController extends GetxController {
   final TextEditingController userAddress = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final ImagePicker picker = ImagePicker();
+  bool loading = false;
   ProvinceResponse? provinceResponse;
   XFile? avatar;
   Province? selectedProvince;
@@ -54,6 +56,21 @@ class EditProfileController extends GetxController {
     if(formKey.currentState!.validate()){
       if(selectedCity == null){
         showSnackBar(message: "لطفا شهر خود را انتخاب کنید!", type: SnackBarType.error);
+      } else {
+        loading = true;
+        update();
+        final result = await _repository.editProfileApi(
+            avatar: avatar,
+            name: userFullName.text,
+            address: userAddress.text,
+            cityId: selectedCity!.id!);
+        loading = false;
+        update();
+        if(result){
+          Get.back();
+          showSnackBar(message: "اطلاعات با موفقیت ویرایش شد", type: SnackBarType.success);
+          Get.find<ProfileController>().fetchUserInfo();
+        }
       }
     }
   }

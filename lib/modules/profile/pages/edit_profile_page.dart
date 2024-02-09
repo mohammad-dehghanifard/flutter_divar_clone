@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
@@ -42,7 +43,10 @@ class EditProfilePage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(color: const Color(0xFFECECEC))
                             ),
-                            child: const Icon(Iconsax.gallery,color: Color(0xFF959595),),
+                            child: controller.avatar == null? const Icon(Iconsax.gallery,color: Color(0xFF959595))
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.file(File(controller.avatar!.path),fit: BoxFit.cover)),
                           ),
                           // change avatar btn
                           TextButton(
@@ -86,6 +90,7 @@ class EditProfilePage extends StatelessWidget {
                           ButtonWidget(
                               onTap: controller.editUser,
                               radius: 8,
+                              loading: controller.loading,
                               text: 'ویرایش'
                           )
                         ],
