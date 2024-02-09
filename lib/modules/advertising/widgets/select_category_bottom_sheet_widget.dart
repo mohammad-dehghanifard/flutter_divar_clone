@@ -7,7 +7,7 @@ import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
 import 'package:flutter_divar_clone/modules/advertising/controller/create_ads_controller.dart';
 import 'package:get/get.dart';
 
-import 'text_item_widget.dart';
+import '../../../helpers/widgets/text_item_widget.dart';
 
 class SelectCategoryBottomSheet extends StatelessWidget {
    SelectCategoryBottomSheet({super.key,required this.list});

@@ -5,7 +5,7 @@ import 'package:flutter_divar_clone/backend/models/city.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
 import 'package:flutter_divar_clone/modules/advertising/controller/create_ads_controller.dart';
-import 'package:flutter_divar_clone/modules/advertising/widgets/text_item_widget.dart';
+import 'package:flutter_divar_clone/helpers/widgets/text_item_widget.dart';
 import 'package:get/get.dart';
 
 
@@ -28,7 +28,7 @@ class SelectCityBottomSheet extends StatelessWidget {
               width: double.infinity,
               child: Column(
                 children: [
-                  const Text("انتخاب استان",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
+                  const Text("انتخاب شهر",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18)),
                   const SizedBox(height: 16),
                   // category list
                   Expanded(child: ListView.builder(

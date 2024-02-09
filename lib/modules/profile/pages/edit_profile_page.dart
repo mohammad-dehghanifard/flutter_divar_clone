@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
 import 'package:flutter_divar_clone/helpers/widgets/page_app_bar_widget.dart';
 import 'package:flutter_divar_clone/helpers/widgets/select_province_and_city_button.dart';
 import 'package:flutter_divar_clone/helpers/widgets/text_field_widget.dart';
+import 'package:flutter_divar_clone/modules/profile/widgets/edit_province_and_city_dialog.dart';
 import 'package:iconsax/iconsax.dart';
 
 class EditProfilePage extends StatelessWidget {
@@ -42,7 +44,11 @@ class EditProfilePage extends StatelessWidget {
                     // city and province
                     Row(
                       children: [
-                        Expanded(child: SelectProvinceAndCityButton(onTap: () {},text: "استان",)),
+                        Expanded(child: SelectProvinceAndCityButton(onTap: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) => const EditProvinceAndCityDialog());
+                        },text: "استان",)),
                         const SizedBox(width: 12),
                         Expanded(child: SelectProvinceAndCityButton(onTap: () {},text: "شهر",)),
                       ],
@@ -70,3 +76,5 @@ class EditProfilePage extends StatelessWidget {
     );
   }
 }
+
+
