@@ -3,7 +3,6 @@ import 'package:flutter_divar_clone/backend/repository/auth_repository.dart';
 import 'package:flutter_divar_clone/helpers/resources/user_helper.dart';
 import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
 import 'package:flutter_divar_clone/modules/home/pages/dashboard_page.dart';
-import 'package:flutter_divar_clone/modules/home/pages/home_page.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
