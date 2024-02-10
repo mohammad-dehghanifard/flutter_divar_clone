@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_divar_clone/backend/models/user.dart';
 import 'package:flutter_divar_clone/backend/repository/base_repository.dart';
+import 'package:flutter_divar_clone/backend/response/ads_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -29,5 +30,17 @@ class ProfileRepository extends BaseRepository {
     final response = await dio.post('/profile',data: data);
     validateResponse(response);
     return response.statusCode == 200;
+  }
+  // get all book mark and user ads
+  Future<AdsResponse> getAllBookMarkAndAdsApi({bool bookMark = true}) async {
+    if(bookMark){
+      final response = await dio.get('/bookmarks');
+      validateResponse(response);
+      return AdsResponse.fromJson(response.data);
+    } else {
+      final response = await dio.get('/user/ads');
+      validateResponse(response);
+      return AdsResponse.fromJson(response.data);
+    }
   }
 }
