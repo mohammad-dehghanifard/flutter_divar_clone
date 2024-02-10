@@ -3,6 +3,7 @@ import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/resources/load_network_image.dart';
 import 'package:flutter_divar_clone/helpers/widgets/loading_widget.dart';
 import 'package:flutter_divar_clone/modules/profile/controller/profile_controller.dart';
+import 'package:flutter_divar_clone/modules/profile/pages/bookmark_and_user_ads_page.dart';
 import 'package:flutter_divar_clone/modules/profile/pages/edit_profile_page.dart';
 import 'package:flutter_divar_clone/modules/profile/widgets/profile_button.dart';
 import 'package:get/get.dart';
@@ -49,14 +50,14 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(height: 16),
               // my ads button
               ProfileButton(
-                onTap: () {},
+                onTap: () => Get.to(const BookMarkAndUserAdsPage(state: UserPageState.userAds)),
                 text: "آگهی های من",
                 icon: Iconsax.task_square,
               ),
               const SizedBox(height: 16),
               // book mark button
               ProfileButton(
-                onTap: () {},
+                onTap: () => Get.to(const BookMarkAndUserAdsPage(state: UserPageState.bookMark)),
                 text: "نشان ها",
                 icon: Iconsax.save_2,
               ),
