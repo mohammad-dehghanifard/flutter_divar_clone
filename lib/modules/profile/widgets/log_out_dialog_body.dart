@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/button_widget.dart';
+import 'package:flutter_divar_clone/modules/profile/controller/profile_controller.dart';
 import 'package:get/get.dart';
 
 class LogOutDialog extends StatelessWidget {
@@ -42,7 +43,9 @@ class LogOutDialog extends StatelessWidget {
                  // yes button
                  Expanded(
                    child: ButtonWidget(
-                       onTap: () {},
+                       onTap: () {
+                         Get.find<ProfileController>().logOut();
+                       },
                        text: "بله"),
                  )
                ],
