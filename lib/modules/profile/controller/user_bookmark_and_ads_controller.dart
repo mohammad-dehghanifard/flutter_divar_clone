@@ -10,11 +10,17 @@ class UserBookMarkAndAdsController extends GetxController {
   final ProfileRepository _repository = ProfileRepository();
   AdsResponse? adsResponse;
 //=========================== Methods ==========================================
-
+  Future<void> fetchData() async {
+    final bool bookMark = state == UserPageState.bookMark? true : false;
+    final result = await _repository.getAllBookMarkAndAdsApi(bookMark: bookMark);
+    adsResponse = result;
+    update();
+  }
 
 //=========================== life cycle =======================================
   @override
   void onInit() {
+    fetchData();
     super.onInit();
   }
 
