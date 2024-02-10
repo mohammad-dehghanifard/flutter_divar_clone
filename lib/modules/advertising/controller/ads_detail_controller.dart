@@ -23,7 +23,7 @@ class AdsDetailController extends GetxController {
     loading = true;
     update();
     final BookMarkResponse result = await _repository.addOrRemoveBookMarkApi(id: id);
-    loading = true;
+    loading = false;
     update();
     showSnackBar(message: result.message!,type: SnackBarType.success);
   }

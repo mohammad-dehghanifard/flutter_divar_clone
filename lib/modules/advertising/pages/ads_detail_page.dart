@@ -56,7 +56,8 @@ class AdsDetailPage extends StatelessWidget {
                                     children: [
                                       // book mark
                                       DetailActionButton(
-                                        onTap: () {},
+                                        loading: controller.loading,
+                                        onTap: () => controller.bookMarkAds(),
                                         icon: Iconsax.archive_add,
                                       ),
                                       //back
