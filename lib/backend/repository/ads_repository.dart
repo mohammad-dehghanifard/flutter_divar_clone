@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_divar_clone/backend/models/ads_detail.dart';
 import 'package:flutter_divar_clone/backend/repository/base_repository.dart';
 import 'package:flutter_divar_clone/backend/response/ads_response.dart';
+import 'package:flutter_divar_clone/backend/response/book_mark_response.dart';
 import 'package:flutter_divar_clone/backend/response/category_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
 import 'package:image_picker/image_picker.dart';
@@ -52,6 +53,12 @@ class AdsRepository extends BaseRepository {
     final response = await dio.post('/ad',data: formData);
     validateResponse(response);
     return response.data['success'];
+  }
+  // add or remove bookmark
+  Future<BookMarkResponse> addOrRemoveBookMarkApi({required int id}) async {
+    final response = await dio.post("/ad/$id/bookmark");
+    validateResponse(response);
+    return BookMarkResponse.fromJson(response.data);
   }
 
 }
