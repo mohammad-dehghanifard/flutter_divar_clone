@@ -1,6 +1,6 @@
 import 'package:flutter_divar_clone/backend/models/ads_detail.dart';
 import 'package:flutter_divar_clone/backend/repository/ads_repository.dart';
-import 'package:flutter_divar_clone/backend/response/result_response.dart';
+import 'package:flutter_divar_clone/backend/response/book_mark_response.dart';
 import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +22,7 @@ class AdsDetailController extends GetxController {
   Future<void> bookMarkAds() async {
     loading = true;
     update();
-    final ResultResponse result = await _repository.addOrRemoveBookMarkApi(id: id);
+    final BookMarkResponse result = await _repository.addOrRemoveBookMarkApi(id: id);
     loading = false;
     update();
     showSnackBar(message: result.message!,type: SnackBarType.success);

@@ -8,10 +8,11 @@ import 'package:iconsax/iconsax.dart';
 class UserAdsItemWidget extends StatelessWidget {
   const UserAdsItemWidget({
     super.key,
-    required this.ads,
+    required this.ads, required this.onDelete,
   });
 
   final Advertising ads;
+  final Function() onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class UserAdsItemWidget extends StatelessWidget {
                       const Spacer(),
                       // remove button
                       IconButton(
-                          onPressed: () {},
+                          onPressed: onDelete,
                           icon: const Icon(Iconsax.trash,size: 18))
                     ],
                   ),

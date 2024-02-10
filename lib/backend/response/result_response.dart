@@ -1,9 +1,9 @@
 class ResultResponse {
-  bool? bookMark;
+  bool? success;
   String? message;
 
   ResultResponse.fromJson(Map<String,dynamic> json){
-    bookMark = json['bookmark'];
+    success = json['success'];
     message = json['message'];
   }
 }

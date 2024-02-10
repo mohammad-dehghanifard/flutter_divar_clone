@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/loading_widget.dart';
@@ -22,12 +23,31 @@ class BookMarkAndUserAdsPage extends StatelessWidget {
                controller.adsResponse == null?
                 Center(child: LoadingWidget(color: Theme.of(context).colorScheme.primary))
                    :Expanded(
-                    child: ListView.builder(
+                    child: controller.adsResponse!.data!.isEmpty?
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.error_outline,size: 160,color: Theme.of(context).colorScheme.primary),
+                            const SizedBox(height: 12),
+                            Text("داده ای جهت نمایش وجود ندارد!",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 16,color: Theme.of(context).colorScheme.primary),)
+                          ],
+                        )
+                        :ListView.builder(
                       padding: const EdgeInsets.all(Distance.bodyMargin),
                         itemCount: controller.adsResponse!.data!.length,
                         itemBuilder: (context, index) {
                           final ads = controller.adsResponse!.data![index];
-                          return UserAdsItemWidget(ads: ads);
+                          return UserAdsItemWidget(
+                              ads: ads,
+                              onDelete: () {
+                                if(state == UserPageState.bookMark){
+                                  controller.bookMarkAds(ads.id!);
+                                } else {
+                                  controller.deleteAds(ads.id!);
+                                }
+                              },
+                          );
                         },
                     ))
               ],
