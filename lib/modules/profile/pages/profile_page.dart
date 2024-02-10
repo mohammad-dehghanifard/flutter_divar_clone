@@ -9,11 +9,17 @@ import 'package:flutter_divar_clone/modules/profile/widgets/profile_button.dart'
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return GetBuilder<ProfileController>(
       init: ProfileController(),
       builder: (controller) {
@@ -74,4 +80,7 @@ class ProfilePage extends StatelessWidget {
       }
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

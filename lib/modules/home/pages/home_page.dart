@@ -4,14 +4,19 @@ import 'package:flutter_divar_clone/helpers/constant/distance.dart';
 import 'package:flutter_divar_clone/helpers/widgets/loading_widget.dart';
 import 'package:flutter_divar_clone/modules/advertising/widgets/ads_list_item_widget.dart';
 import 'package:flutter_divar_clone/modules/home/controller/home_controller.dart';
-import 'package:flutter_divar_clone/modules/home/widgets/home_app_bar_widget.dart';
 import 'package:get/get.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return GetBuilder<HomeController>(
         init: HomeController(),
         builder: (controller) {
@@ -34,4 +39,7 @@ class HomePage extends StatelessWidget {
                     );
         });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

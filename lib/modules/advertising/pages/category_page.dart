@@ -6,11 +6,17 @@ import 'package:flutter_divar_clone/modules/advertising/controller/category_cont
 import 'package:flutter_divar_clone/modules/advertising/widgets/category_item_widget.dart';
 import 'package:get/get.dart';
 
-class CategoryPage extends StatelessWidget {
+class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
 
   @override
+  State<CategoryPage> createState() => _CategoryPageState();
+}
+
+class _CategoryPageState extends State<CategoryPage> with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return GetBuilder<CategoryController>(
       init: CategoryController(),
       builder: (controller) {
@@ -29,6 +35,9 @@ class CategoryPage extends StatelessWidget {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 

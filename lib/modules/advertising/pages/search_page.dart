@@ -6,11 +6,17 @@ import 'package:flutter_divar_clone/modules/advertising/widgets/ads_list_item_wi
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
 
   @override
+  State<SearchPage> createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> with AutomaticKeepAliveClientMixin {
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Padding(
       padding: const EdgeInsets.all(Distance.bodyMargin),
       child:  GetBuilder<AdsSearchController>(
@@ -51,4 +57,7 @@ class SearchPage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

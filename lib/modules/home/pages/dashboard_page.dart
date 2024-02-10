@@ -31,6 +31,7 @@ class DashboardPage extends StatelessWidget {
 
                 Expanded(
                   child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
                     controller: controller.pageController,
                     children: const [
                       HomePage(),
