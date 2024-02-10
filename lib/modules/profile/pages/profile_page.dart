@@ -5,6 +5,7 @@ import 'package:flutter_divar_clone/helpers/widgets/loading_widget.dart';
 import 'package:flutter_divar_clone/modules/profile/controller/profile_controller.dart';
 import 'package:flutter_divar_clone/modules/profile/pages/bookmark_and_user_ads_page.dart';
 import 'package:flutter_divar_clone/modules/profile/pages/edit_profile_page.dart';
+import 'package:flutter_divar_clone/modules/profile/widgets/log_out_dialog_body.dart';
 import 'package:flutter_divar_clone/modules/profile/widgets/profile_button.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -70,7 +71,11 @@ class _ProfilePageState extends State<ProfilePage> with AutomaticKeepAliveClient
               const SizedBox(height: 16),
               // log out button
               ProfileButton(
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => const LogOutDialog());
+                },
                 text: "خروج از حساب",
                 icon: Iconsax.logout,
               ),
