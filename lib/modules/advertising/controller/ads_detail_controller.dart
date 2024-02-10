@@ -1,5 +1,7 @@
 import 'package:flutter_divar_clone/backend/models/ads_detail.dart';
 import 'package:flutter_divar_clone/backend/repository/ads_repository.dart';
+import 'package:flutter_divar_clone/backend/response/book_mark_response.dart';
+import 'package:flutter_divar_clone/helpers/widgets/show_snack_bar.dart';
 import 'package:get/get.dart';
 
 class AdsDetailController extends GetxController {
@@ -8,12 +10,22 @@ class AdsDetailController extends GetxController {
 //=========================== variables ========================================
   final AdsRepository _repository = AdsRepository();
   AdsDetail? detail;
+  bool loading = false;
 
 //=========================== Methods ==========================================
   Future<void> fetchAdsDetail() async {
     final result = await _repository.getAdsDetailApi(id: id);
     detail = result;
     update();
+  }
+
+  Future<void> bookMarkAds() async {
+    loading = true;
+    update();
+    final BookMarkResponse result = await _repository.addOrRemoveBookMarkApi(id: id);
+    loading = true;
+    update();
+    showSnackBar(message: result.message!,type: SnackBarType.success);
   }
 
 //=========================== LifeCycle ========================================
