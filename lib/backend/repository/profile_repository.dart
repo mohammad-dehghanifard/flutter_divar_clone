@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_divar_clone/backend/models/user.dart';
 import 'package:flutter_divar_clone/backend/repository/base_repository.dart';
 import 'package:flutter_divar_clone/backend/response/ads_response.dart';
+import 'package:flutter_divar_clone/backend/response/result_response.dart';
 import 'package:flutter_divar_clone/backend/response/province_response.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -42,5 +43,17 @@ class ProfileRepository extends BaseRepository {
       validateResponse(response);
       return AdsResponse.fromJson(response.data);
     }
+  }
+  // add or remove bookmark
+  Future<ResultResponse> addOrRemoveBookMarkApi({required int id}) async {
+    final response = await dio.post("/ad/$id/bookmark");
+    validateResponse(response);
+    return ResultResponse.fromJson(response.data);
+  }
+  // remove ads
+  Future<ResultResponse> removeAdsApi({required int id}) async {
+    final response = await dio.delete("/ad/$id");
+    validateResponse(response);
+    return ResultResponse.fromJson(response.data);
   }
 }
